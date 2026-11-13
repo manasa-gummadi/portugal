@@ -77,7 +77,7 @@ header .lede { max-width: 64ch; color: var(--muted); font-size: 1.08rem; }
   background-position: 0 0, 15px 15px, 0 0, 0 0;
 }
 
-section { padding-block: 48px 0; display: grid; gap: 18px; scroll-margin-top: 12px; }
+section { padding-block: 48px 0; display: grid; gap: 18px; scroll-margin-top: 120px; }
 .section-head { display: grid; gap: 6px; }
 .section-head p { max-width: 68ch; color: var(--muted); }
 .region { font-family: var(--display); font-size: 1.35rem; padding-top: 10px; }
@@ -109,8 +109,15 @@ section { padding-block: 48px 0; display: grid; gap: 18px; scroll-margin-top: 12
 .gem-row p { margin: 0; font-size: 0.9rem; line-height: 1.45; }
 .gem-row .meta { font-size: 0.82rem; color: var(--muted); }
 .gem-row:target { background: var(--sun-soft); box-shadow: 0 0 0 8px var(--sun-soft); border-radius: 2px; }
-.day .gem a, .day li .more { font-weight: 600; }
-.day li .more { font-size: 0.82rem; margin-left: 6px; white-space: nowrap; }
+.day .more, .day .gem-btn { font: inherit; font-size: 0.82rem; font-weight: 600; color: var(--cobalt); background: none; border: 0; padding: 0; margin-left: 6px; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+.day .gem-btn { margin: 0; font-size: 0.9rem; }
+.day .more[aria-expanded="true"], .day .gem-btn[aria-expanded="true"] { text-decoration: none; }
+.gem-pop { margin-top: 8px; padding: 10px 12px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; }
+.gem-card { display: grid; gap: 3px; font-size: 0.9rem; }
+.gem-card.has-img { grid-template-columns: 92px minmax(0, 1fr); column-gap: 12px; align-items: start; }
+.gem-card img { width: 92px; height: 69px; object-fit: cover; border-radius: 6px; background: var(--cobalt-soft); }
+.gem-card p { margin: 2px 0 0; line-height: 1.45; }
+.gem-card .meta { font-size: 0.82rem; color: var(--muted); }
 .day .en { display: block; font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
 .day .en > span { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 1px 6px; border-radius: 4px; margin-right: 4px; }
 .en-y { background: var(--ok-soft); color: var(--ok); }
@@ -126,6 +133,27 @@ section { padding-block: 48px 0; display: grid; gap: 18px; scroll-margin-top: 12
 .controls .row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
 .controls .lbl { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); min-width: 88px; }
 .sticky { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; box-shadow: 0 6px 18px -14px rgba(10, 20, 40, 0.5); }
+.bar { padding: 10px 14px; gap: 8px; margin-top: 18px; grid-template-columns: minmax(0, 1fr); }
+.bar > * { min-width: 0; }
+.bar .jump { flex-wrap: nowrap; overflow-x: auto; margin: 0; scrollbar-width: none; padding-bottom: 2px; }
+.bar .jump::-webkit-scrollbar { display: none; }
+.bar .jump a { white-space: nowrap; padding: 4px 11px; font-size: 0.84rem; background: var(--bg); }
+.bar .seg button { padding: 5px 16px; font-size: 0.88rem; }
+.bar .lbl { min-width: 0; }
+.bar .row .note { font-size: 0.84rem; }
+
+/* header: at a glance */
+.updated { font-size: 0.82rem; color: var(--muted); }
+.glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin-top: 6px; }
+.glance .g { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 2px; align-content: start; min-width: 0; }
+.glance .g > span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+.glance .g b { font-size: 1rem; font-weight: 700; }
+.glance .g small { font-size: 0.85rem; color: var(--muted); }
+.glance .g a { font-weight: 600; }
+.prep { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; display: grid; gap: 8px; }
+.prep h3 { font-size: 1.15rem; }
+.prep ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; font-size: 0.93rem; }
+.sumline { font-size: 1.05rem; color: var(--ink) !important; }
 
 /* summary */
 .summary { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px; }
@@ -164,6 +192,10 @@ section { padding-block: 48px 0; display: grid; gap: 18px; scroll-margin-top: 12
 .hotel .links { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.9rem; font-weight: 600; }
 .lvl { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; background: var(--cobalt-soft); color: var(--cobalt); width: fit-content; }
 .lvl.alt { background: var(--line); color: var(--muted); }
+.lvl.ok { background: var(--ok-soft); color: var(--ok); }
+.due { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; background: var(--warn-soft); color: var(--warn); width: fit-content; }
+.bk .badges { display: flex; flex-wrap: wrap; gap: 5px; }
+.bk-ok { color: var(--ok); font-weight: 700; font-size: 1.05rem; line-height: 1; padding-top: 2px; }
 
 /* booking timeline */
 .book { display: grid; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
@@ -181,12 +213,24 @@ section { padding-block: 48px 0; display: grid; gap: 18px; scroll-margin-top: 12
 @media (max-width: 600px) { .bk { grid-template-columns: 28px minmax(0, 1fr); } .bk .what { grid-column: 2; } }
 
 /* days */
+.daynav { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.daynav a, .daynav button { font: inherit; font-size: 0.84rem; font-weight: 600; text-decoration: none; color: var(--cobalt); background: var(--surface); border: 1px solid var(--line); padding: 4px 11px; border-radius: 999px; cursor: pointer; }
+.daynav a.today { background: var(--sun); border-color: var(--sun); color: #15213B; }
+.daynav button { margin-left: auto; color: var(--ink); }
 .days { display: grid; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
-.day { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 18px; padding: 18px 22px; border-bottom: 1px solid var(--line); }
-.day:last-child { border-bottom: 0; }
-.day.travel { background: var(--cobalt-soft); }
+.days details.day { background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 0; scroll-margin-top: 120px; }
+.days details.day:last-child { border-bottom: 0; }
+.days details.day.travel { background: var(--cobalt-soft); }
+.day > summary { list-style: none; display: grid; grid-template-columns: 160px minmax(0, 1fr) 16px; gap: 4px 18px; align-items: baseline; padding: 14px 22px; font-weight: 400; }
+.day > summary::-webkit-details-marker { display: none; }
+.day > summary .when { grid-row: 1; grid-column: 1; }
+.day > summary .hl { grid-row: 1; grid-column: 2; font-size: 0.92rem; color: var(--muted); }
+.day > summary::after { content: "▸"; grid-row: 1; grid-column: 3; justify-self: end; color: var(--muted); }
+.day[open] > summary::after { content: "▾"; }
 .day .when b { display: block; font-size: 1.02rem; }
 .day .when span { font-size: 0.88rem; color: var(--cobalt); font-weight: 600; }
+.day-body { padding: 0 22px 18px calc(22px + 160px + 18px); }
+.day .start { display: inline-block; font-size: 0.9rem; font-weight: 700; background: var(--sun-soft); padding: 3px 10px; border-radius: 6px; margin-bottom: 10px; }
 .day ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
 .day li { display: grid; grid-template-columns: 3.1rem minmax(0, 1fr) auto; align-items: baseline; gap: 12px; }
 .day li .tm { font-size: 0.86rem; font-weight: 700; color: var(--cobalt); font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -201,11 +245,14 @@ section { padding-block: 48px 0; display: grid; gap: 18px; scroll-margin-top: 12
 .tag-rest { background: var(--sun-soft); color: var(--ink); }
 .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.88rem; color: var(--muted); margin-top: 8px; }
 .day li .cost { font-size: 0.84rem; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--ink); background: var(--sun-soft); padding: 1px 8px; border-radius: 999px; }
-.day .gem { font-size: 0.9rem; color: var(--muted); margin-top: 6px; }
+.day .gem { font-size: 0.9rem; color: var(--muted); margin-top: 8px; }
 .day .gem::before { content: "Off the beaten path"; display: inline-block; margin-right: 8px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--sun); }
-.day .warn { font-size: 0.88rem; color: var(--warn); margin-top: 4px; }
+.day .warn { font-size: 0.88rem; color: var(--warn); margin-top: 6px; }
 @media (max-width: 600px) {
-  .day { grid-template-columns: 1fr; gap: 6px; padding: 16px; }
+  .day > summary { grid-template-columns: minmax(0, 1fr) 16px; padding: 14px 16px; }
+  .day > summary .hl { grid-row: 2; grid-column: 1 / -1; }
+  .day > summary::after { grid-column: 2; }
+  .day-body { padding: 0 16px 16px; }
   .wrap { padding-inline: 16px; }
 }
 
@@ -223,93 +270,68 @@ details ul { margin: 12px 0 0; padding-left: 1.1em; display: grid; gap: 4px; fon
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Group trip plan · 10 travelers · an Airbnb in each city</div>
+    <div class="eyebrow">Group trip · 10 people · an Airbnb in each city</div>
     <h1>Portugal, Dec 12–20</h1>
-    <div class="facts">
-      <div><b>Sat Dec 12</b><span>leave Atlanta</span></div>
-      <div><b>Sun Dec 20</b><span>fly home, 12:20</span></div>
+    <p class="updated">Updated Nov 13, 2026</p>
+    <div class="glance" id="glance"></div>
+    <div class="prep">
+      <h3>Before you leave</h3>
+      <ul>
+        <li>Passport valid until at least Mar 20, 2027.</li>
+        <li>Not a US passport? Check if you need a Schengen visa. Appointments can take weeks.</li>
+        <li>Rain jacket and shoes with grip.</li>
+        <li>Apps: Uber or Bolt, and Google Translate with Portuguese downloaded.</li>
+        <li>The week before: check the forecast and cp.pt for rail strikes. <a href="#know">More below</a></li>
+      </ul>
     </div>
-    <nav class="jump" aria-label="Sections">
-      <a href="#places">Places</a><a href="#gems">Hidden gems</a><a href="#plan">Prices</a><a href="#stay">Your stays</a><a href="#days">Day by day</a><a href="#book">Booking list</a><a href="#know">Know before you go</a>
-    </nav>
   </header>
 </div>
 <div class="tiles" aria-hidden="true"></div>
 
 <div class="wrap">
 
-  <section id="places">
-    <div class="section-head">
-      <div class="eyebrow">Where you're going</div>
-      <h2>The places</h2>
-      <p>Tags show when each place is on the plan.</p>
-    </div>
-    <div id="destList"></div>
-  </section>
-
-  <section id="gems">
-    <div class="section-head">
-      <div class="eyebrow">Smaller stops worth knowing</div>
-      <h2>Hidden gems and local favorites</h2>
-      <p>More about the smaller places and foods in the day plan. Links marked "About this" jump here.</p>
-    </div>
-    <div id="gemList"></div>
-  </section>
-
-  <div class="planner">
-  <section id="plan">
-    <div class="section-head">
-      <div class="eyebrow">Costs</div>
-      <h2>Prices</h2>
-      <p>Per person, for the plan you pick below. Flights and both Airbnbs are already paid. The rest is an estimate of what you'll spend there: getting between the cities, tickets and tours for the Core sights in the day plan, food at about €45 a day, local transit and tourist tax. The Dec 16 switch stays at the top of the screen as you scroll.</p>
-    </div>
-  </section>
-    <div class="controls sticky" id="controls" style="margin-top:18px">
-      <div class="row"><span class="lbl">Dec 16</span>
-        <div class="seg" role="group" aria-label="How to get from Porto to Lisbon" id="routeSeg">
-          <button type="button" data-v="r1" aria-pressed="true">Train + Óbidos day trip</button>
-          <button type="button" data-v="r2" aria-pressed="false">Private driver via Coimbra, Nazaré, Óbidos</button>
-        </div>
+  <div class="controls sticky bar" id="controls">
+    <nav class="jump" aria-label="Sections">
+      <a href="#days">Days</a><a href="#stay">Stays</a><a href="#book">Booking</a><a href="#know">Know before you go</a><a href="#plan">Prices</a><a href="#places">Places</a><a href="#gems">Gems</a>
+    </nav>
+    <div class="row"><span class="lbl">Dec 16 plan</span>
+      <div class="seg" role="group" aria-label="How to get from Porto to Lisbon on Dec 16" id="routeSeg">
+        <button type="button" data-v="r1" aria-pressed="true">Train</button>
+        <button type="button" data-v="r2" aria-pressed="false">Driver</button>
       </div>
-      <p class="note">Both plans keep the main Lisbon sights. The driver plan adds Coimbra and Nazaré, moves Óbidos to the travel day, and frees a Lisbon day, which adds LX Factory, MAAT and Cristo Rei.</p>
+      <span class="note">Not decided yet</span>
     </div>
-  <section id="prices" style="padding-top:18px">
-    <div class="summary">
-      <div class="panel" id="sumMain"></div>
-      <div class="panel" id="sumAll"></div>
+  </div>
+
+  <section id="days">
+    <div class="section-head">
+      <div class="eyebrow">Day by day</div>
+      <h2 id="daysTitle">What you'll do</h2>
+      <p>Tap a day to open it. Only Dec 16–18 change with the plan. The driver plan adds Coimbra, Nazaré, LX Factory and MAAT for about <span id="planDiff">$160</span> more each.</p>
+      <div class="legend"><span><span class="tag tag-core">Core</span>main sights</span><span><span class="tag tag-opt">Optional</span>if there's time</span><span><span class="tag tag-food">Meal</span></span><span><span class="tag tag-rest">Break</span>coffee or rest</span><span>No tag: getting around. Times are rough. Prices per adult.</span></div>
     </div>
-    <p class="note">The driver price uses Swingo's listed rate for 10 people with three stops (two vans, €1,759 for the group). It's an estimate until you get a quote; other companies may be cheaper.</p>
+    <div class="daynav"><span id="dayChips" style="display:contents"></span><button type="button" id="dayToggle">Open all</button></div>
+    <div class="days" id="dayList"></div>
   </section>
 
   <section id="stay">
     <div class="section-head">
       <div class="eyebrow">Booked</div>
       <h2>Your stays</h2>
-      <p>Both Airbnbs are booked, at $350 per person for the two together. Travel from each flat is built into the day-by-day plan.</p>
+      <p>Both booked: $350 per person for the two.</p>
     </div>
     <div id="hotelList" style="display:grid;gap:30px"></div>
-  </section>
-
-  <section id="days">
-    <div class="section-head">
-      <div class="eyebrow">Day by day</div>
-      <h2 id="daysTitle">What you'll do</h2>
-      <p>Prices are per adult; free things have no price tag.</p>
-      <div class="legend"><span><span class="tag tag-core">Core</span>the day's main sights</span><span><span class="tag tag-opt">Optional</span>only if you have time and energy</span><span><span class="tag tag-food">Meal</span>lunch, dinner or breakfast</span><span><span class="tag tag-rest">Break</span>coffee or rest</span><span>Untagged lines are getting around. Times are approximate.</span></div>
-    </div>
-    <div class="days" id="dayList"></div>
   </section>
 
   <section id="book">
     <div class="section-head">
       <div class="eyebrow">What to book, and when</div>
       <h2>Booking list</h2>
-      <p>Everything that needs booking ahead, in the order to book it. The "book by" dates are recommendations based on how fast things sell out. The only fixed date was Nov 5, when Óbidos Christmas-village tickets went on sale; they're on sale now. Tick items off as you book them.</p>
+      <p>Sorted by deadline. One person books for all 10 so the times match, unless it says "Each person". "Book by" dates are our targets, not official cutoffs.</p>
     </div>
     <div class="book" id="bookList"></div>
     <p class="note" id="bookCount"></p>
   </section>
-  </div>
 
   <section id="know">
     <div class="section-head">
@@ -369,6 +391,40 @@ details ul { margin: 12px 0 0; padding-left: 1.1em; display: grid; gap: 4px; fon
     </div>
   </section>
 
+  <section id="plan">
+    <div class="section-head">
+      <div class="eyebrow">Costs</div>
+      <h2>Prices</h2>
+      <p class="sumline" id="sumLine"></p>
+    </div>
+    <details>
+      <summary>Full breakdown and plan comparison</summary>
+      <div class="summary" style="margin-top:14px">
+        <div class="panel" id="sumMain"></div>
+        <div class="panel" id="sumAll"></div>
+      </div>
+      <p class="note" style="margin-top:12px">The driver price uses Swingo's listed rate for 10 people with three stops (two vans, €1,759 for the group). It's an estimate until you get a quote.</p>
+    </details>
+  </section>
+
+  <section id="places">
+    <div class="section-head">
+      <div class="eyebrow">Where you're going</div>
+      <h2>The places</h2>
+      <p>Tags show when each place is on the plan.</p>
+    </div>
+    <div id="destList"></div>
+  </section>
+
+  <section id="gems">
+    <div class="section-head">
+      <div class="eyebrow">Smaller stops worth knowing</div>
+      <h2>Hidden gems and local favorites</h2>
+      <p>Smaller places and foods from the day plan. Tap "About" in a day to read them there.</p>
+    </div>
+    <div id="gemList"></div>
+  </section>
+
   <section id="sources">
     <details>
       <summary>Sources and photo credits</summary>
@@ -425,14 +481,14 @@ const CREDIT2 = {"capela-almas": ["Diego Delso", "CC BY-SA 3.0", "https://creati
   const gmap = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
   const STAYS = [
     { city: "Porto", nights: 3, dates: "Sun Dec 13 – Wed Dec 16", addr: "Praça do Marquês de Pombal 66, 4th floor", map: gmap("Praça do Marquês de Pombal 66, Porto, Portugal"),
-      inout: "Check-in after 16:00 · check-out by 11:00",
+      inout: "Check-in after 16:00 · check-out by 11:00", short: "Dec 13–16", tin: "16:00", tout: "11:00", metro: "Metro Marquês (yellow)",
       find: "The building has a Caixa Geral de Depósitos bank on the ground floor and a church in front. Ring the buzzer marked 'Praça 66'.",
       near: [
         "Metro Marquês (yellow line D) is right outside: Trindade 2 stops, Aliados 3, São Bento 4, Jardim do Morro in Gaia 5.",
         "Walking: about 20 minutes downhill to Aliados, a little longer back up. Bolhão and Rua de Santa Catarina are about 15 minutes."
       ] },
     { city: "Lisbon", nights: 4, dates: "Wed Dec 16 – Sun Dec 20", addr: "Avenida Guerra Junqueiro 5", map: gmap("Avenida Guerra Junqueiro 5, Lisboa, Portugal"),
-      inout: "Check-in after 15:00 · check-out by 11:00",
+      inout: "Check-in after 15:00 · check-out by 11:00", short: "Dec 16–20", tin: "15:00", tout: "11:00", metro: "Metro Alameda (red, green)",
       find: "Same building as the large MultiOpticas glasses shop.",
       near: [
         "Metro Alameda (red and green lines) is a few minutes' walk. The red line goes direct to the airport and Oriente; the green line to Rossio, Baixa-Chiado and Cais do Sodré.",
@@ -762,6 +818,23 @@ const CREDIT2 = {"capela-almas": ["Diego Delso", "CC BY-SA 3.0", "https://creati
     at("12:20", I("Flight home."))
   ] };
 
+  // one-line summary and start for each day
+  const META = [
+    [D12, "Overnight flight from Atlanta", ""],
+    [D13, "Rua das Flores, Ribeira, Cálem cellar, sunset in Gaia", "Land 9:30, Porto airport"],
+    [D14, "Lello, Clérigos, São Bento, the Bolsa, Bolhão, francesinha", "Leave the flat 8:40 · Marquês metro"],
+    [D15, "Douro wine tour, quiet evening", "Tour pickup 8:30 · Praça do Marquês"],
+    [TRAIN_LIS, "Train at 12:00, then Chiado, Rossio and Ponto Final", "Check out 11:00 · train 12:00 from Campanhã"],
+    [OBIDOS_DAY, "Óbidos Christmas village, walls, ginjinha, rest", "Leave 9:00 · Alameda metro"],
+    [FRI_R1, "Belém, the castle, sunset, fado dinner", "Leave 8:45 · Alameda metro"],
+    [DRIVE_LIS, "Coimbra, Nazaré, Óbidos, Lisbon by 18:30", "Bags down for the 7:45 pickup"],
+    [THU_CITY, "Chiado, Rossio, the castle, sunset, fado dinner", "Leave 9:30 · Alameda metro"],
+    [FRI_BELEM, "Belém, LX Factory, Cacilhas, Ponto Final", "Leave 8:45 · Alameda metro"],
+    [SAT, "Pena, Regaleira, Gulbenkian in the evening", "Leave 8:15 · Alameda metro"],
+    [HOME_LIS, "Breakfast, airport, flight at 12:20", "Leave the flat 8:45"]
+  ];
+  META.forEach(([d, sum, start]) => Object.assign(d, { sum, start }));
+
   const DAYS = {
     r1: [D12, D13, D14, D15, TRAIN_LIS, OBIDOS_DAY, FRI_R1, SAT, HOME_LIS],
     r2: [D12, D13, D14, D15, DRIVE_LIS, THU_CITY, FRI_BELEM, SAT, HOME_LIS]
@@ -769,11 +842,8 @@ const CREDIT2 = {"capela-almas": ["Diego Delso", "CC BY-SA 3.0", "https://creati
 
   // ---------- booking timeline ----------
   const BOOK = [
-    { id: "hotels", when: "Booked", sub: "", what: "Airbnbs: Porto Dec 13–16, Lisbon Dec 16–20", links: [["Your stays", "#stay"]], note: "Ask the Porto host about early bag drop: you land at 9:30 and check-in is from 16:00. Lisbon check-in is from 15:00." },
-    { id: "luggage", when: "By Dec 6", sub: "10 suitcases", what: "Luggage storage by Trindade metro, Sun Dec 13 (about 11:30 to 18:00)", links: [["LuggageHero", L.luggagehero], ["Radical Storage", L.radical]], note: "Only needed if the Porto host can't take the bags early. Book for 10 bags so the shop has room; about €5 a bag for the day." },
-    { id: "meals", when: "By Dec 6", sub: "tables for 10", what: "Restaurant bookings: Sunday lunch in Ribeira and Sunday dinner near the Porto flat (Dec 13), lunch in Óbidos (Dec 17, train plan) or Nazaré (Dec 16, driver plan), and Saturday dinner (Dec 19)", links: [["Your stays", "#stay"]], note: "Groups of 10 rarely get walk-in tables, especially on weekends and during Vila Natal. Your Airbnb hosts can recommend places and call for you. Café Santiago (Monday) takes no bookings, so queue early." },
+    { id: "natal", fixed: true, when: "Now", sub: "on sale since Nov 5", what: "Óbidos Vila Natal Christmas village: Thu Dec 17, 11:00 session (train plan), or Wed Dec 16, 16:00 session (driver plan)", links: [["obidos.bol.pt", L.natal]], note: "Hourly sessions. Monday–Thursday last entry 17:00." },
     { id: "driver", routes: ["r2"], when: "By Nov 20", sub: "get quotes first", what: "Private driver Porto → Lisbon via Coimbra, Nazaré and Óbidos, Wed Dec 16", links: [["Swingo", L.swingo], ["Walkborder", L.walkborder]], note: "Swingo lists two vans for 9–15 people: €1,759 for 10 with three stops. Walkborder starts from €541 a group and quotes for 8+ on request. Get written confirmation of the stops, an early pickup (about 7:45), luggage space for 10, and their plan if it rains." },
-    { id: "natal", fixed: true, when: "Nov 5", sub: "on sale now", what: "Óbidos Vila Natal Christmas village: Thu Dec 17, 11:00 session (train plan), or Wed Dec 16, 16:00 session (driver plan)", links: [["obidos.bol.pt", L.natal]], note: "Hourly sessions. Monday–Thursday last entry 17:00." },
     { id: "pena", when: "By Nov 30", sub: "fixed entry time", what: "Pena Palace, Sat Dec 19 (morning slot)", links: [["Parques de Sintra", L.pena]], note: "Essential (€20) or Complete (€45): check what each includes before buying. Add the Moorish Castle (€12) on the same site if you want it." },
     { id: "regaleira", when: "By Nov 30", sub: "30-minute slots", what: "Quinta da Regaleira, Sat Dec 19 (about 14:30)", links: [["regaleira.pt", L.regaleira]], note: "Buying gives you a voucher. Then use '(Re)agendamento' on the same site to choose your time slot. English audio guide (€5) at the ticket office." },
     { id: "jeronimos", when: "By Nov 30", sub: "often sells out", what: "Jerónimos Monastery, Fri Dec 18 (9:30 opening)", links: [["Tickets", L.jeronimos]], note: "Buying gives you a voucher; then schedule your visit time on the same site. Closed Mondays." },
@@ -784,34 +854,47 @@ const CREDIT2 = {"capela-almas": ["Diego Delso", "CC BY-SA 3.0", "https://creati
     { id: "calem", when: "By Dec 1", sub: "", what: "Cálem port cellar Tour & Taste, Sun Dec 13 (about 14:30)", links: [["Cálem", L.calem]], note: "Book an English slot. For a fado night in Porto, the evening Tour, Taste & Fado on Mon Dec 14 is an option (pick it or the Taste Porto food tour)." },
     { id: "douro", when: "By Dec 1", sub: "pick one tour", what: "Douro Valley tour, Tue Dec 15", links: [["GetYourGuide tour", L.douroTour], ["Efuntours", L.efun], ["Living Tours", L.living], ["Wonders Tours", L.wonders]], note: "Check Dec 15 is on the calendar and whether any boat part runs in winter. Small groups cap at 7–8, so book a private tour or two departures for 10. Living Tours has a €99 winter price until Dec 31; Wonders hasn't listed December dates yet. Ask for pickup at Praça do Marquês de Pombal." },
     { id: "clube", when: "By Dec 1", sub: "best fado option for 10", what: "Clube de Fado dinner and show: Fri Dec 18 (train plan) or Thu Dec 17 (driver plan)", links: [["Book online", "https://www.clubedefado.pt/en/booking/"]], note: "€78 per person; online booking covers up to 10. This is the realistic fado night for the whole group: Tasca do Chico is tiny, takes no reservations and can't hold 10 together." },
-    { id: "train", routes: ["r1"], when: "By Dec 10", sub: "sale fares need 5+ days", what: "Alfa Pendular train Porto Campanhã → Lisbon Oriente, Wed Dec 16 (about 12:00)", links: [["cp.pt", L.cp]], note: "€35.70 standard fare; cheaper sale fares if you book early. Get off at Oriente for the red line to your flat. Check cp.pt for strikes (greves) the week before; the backup is an express coach, about 3.5 hours." },
+    { id: "clerigos", when: "By Dec 1", sub: "day or night ticket", what: "Clérigos Tower, Mon Dec 14 (day or Christmas night ticket)", links: [["Tickets", L.clerigos]], note: "€10 by day; €5 night tickets for 19:00–23:00 in the Christmas season." },
+    { id: "luggage", when: "By Dec 6", sub: "10 suitcases", what: "Luggage storage by Trindade metro, Sun Dec 13 (about 11:30 to 18:00)", links: [["LuggageHero", L.luggagehero], ["Radical Storage", L.radical]], note: "Only needed if the Porto host can't take the bags early. Book for 10 bags so the shop has room; about €5 a bag for the day." },
+    { id: "meals", when: "By Dec 6", sub: "tables for 10", what: "Restaurant bookings: Sunday lunch in Ribeira and Sunday dinner near the Porto flat (Dec 13), lunch in Óbidos (Dec 17, train plan) or Nazaré (Dec 16, driver plan), and Saturday dinner (Dec 19)", links: [["Your stays", "#stay"]], note: "Groups of 10 rarely get walk-in tables, especially on weekends and during Vila Natal. Your Airbnb hosts can recommend places and call for you. Café Santiago (Monday) takes no bookings, so queue early." },
     { id: "pontofinal1", when: "By Dec 9", sub: "phone only", what: "Ponto Final dinner in Cacilhas, 19:00: Wed Dec 16 (train plan) or Fri Dec 18 (driver plan)", links: [["About Ponto Final", "#g-cacilhas"]], note: "Call +351 21 276 0743, or ask your Airbnb host to call. Closed Tuesdays; it may close for winter from Dec 20." },
+    { id: "train", routes: ["r1"], when: "By Dec 10", sub: "sale fares need 5+ days", what: "Alfa Pendular train Porto Campanhã → Lisbon Oriente, Wed Dec 16 (about 12:00)", links: [["cp.pt", L.cp]], note: "€35.70 standard fare; cheaper sale fares if you book early. Get off at Oriente for the red line to your flat. Check cp.pt for strikes (greves) the week before; the backup is an express coach, about 3.5 hours." },
+    { id: "lisboacard", each: true, when: "Optional, anytime", sub: "", what: "72-hour Lisboa Card (€62)", links: [["visitlisboa", "https://shop.visitlisboa.com/products/lisboa-card"]], note: "Covers Lisbon transit (including Tram 28), the Sintra train, the castle, Jerónimos and Belém Tower. On this plan it saves about €10 each. Jerónimos and the Tower still need time slots; check the card's instructions for the order of steps." },
     { id: "tasteporto", when: "Optional", sub: "book by 20:00 the day before", what: "Taste Porto food tour, Mon Dec 14", links: [["Taste Porto", L.tasteporto]], note: "Downtown & Bolhão €95, or Vintage & Port €89. Private tours for larger groups on request." },
     { id: "tastelisboa", when: "Optional", sub: "private groups on request", what: "Taste of Lisboa food walk, Lisbon (Thu Dec 17 on the driver plan)", links: [["Taste of Lisboa", L.tastelisboa], ["Private group request", L.tastelisboaPrivate]], note: "Lisbon Roots or Lisbon Market walks from €99. On the train plan it would take the place of part of a sightseeing day." },
-    { id: "clerigos", when: "By Dec 1", sub: "day or night ticket", what: "Clérigos Tower, Mon Dec 14 (day or Christmas night ticket)", links: [["Tickets", L.clerigos]], note: "€10 by day; €5 night tickets for 19:00–23:00 in the Christmas season." },
     { id: "sintrapalace", when: "Optional", sub: "date booking required", what: "National Palace of Sintra, Sat Dec 19 (instead of the Moorish Castle)", links: [["Parques de Sintra", L.pena]], note: "€13, with a mandatory date booking." },
     { id: "queluz", when: "Optional", sub: "15% off online 3+ days ahead", what: "Queluz Palace, Sat Dec 19 (rainy-day backup)", links: [["Parques de Sintra", L.queluz]], note: "€13 palace and gardens. On the Sintra train line at Queluz-Belas." },
     { id: "tomar", routes: ["r1"], when: "Optional", sub: "swap for Óbidos", what: "Tomar or Fátima day trip instead of Óbidos, Thu Dec 17", links: [["CP trains (Tomar)", L.cp], ["Fátima sanctuary", L.fatima], ["Rede Expressos (Fátima bus)", L.rede]], note: "Tomar's Convent of Christ is about 2 hours by train from Lisbon; its new website isn't live yet, so check the ticket price at the door. Fátima is about 1.5 hours by express bus from Sete Rios and free to visit." },
-    { id: "lisboacard", when: "Optional, anytime", sub: "", what: "72-hour Lisboa Card (€62)", links: [["visitlisboa", "https://shop.visitlisboa.com/products/lisboa-card"]], note: "Covers Lisbon transit (including Tram 28), the Sintra train, the castle, Jerónimos and Belém Tower. On this plan it saves about €10 each. Jerónimos and the Tower still need time slots; check the card's instructions for the order of steps." }
+    { id: "hotels", booked: true, when: "Done", sub: "both flats", what: "Airbnbs: Porto Dec 13–16, Lisbon Dec 16–20", links: [["Your stays", "#stay"]], note: "Ask the Porto host about early bag drop: you land at 9:30 and check-in is from 16:00. Lisbon check-in is from 15:00." }
   ];
   const BK_KEY = "portugal-trip-booked";
   function loadBooked() { try { return JSON.parse(localStorage.getItem(BK_KEY) || "{}") || {}; } catch (e) { return {}; } }
   function saveBooked(v) { try { localStorage.setItem(BK_KEY, JSON.stringify(v)); } catch (e) { /* storage unavailable: ticks last for this visit only */ } }
   let booked = loadBooked();
 
+  function dueTag(b) {
+    const m = /^By (Nov|Dec) (\d+)/.exec(b.when); if (!m) return "";
+    const due = new Date(2026, m[1] === "Nov" ? 10 : 11, +m[2]), now = new Date(); now.setHours(0, 0, 0, 0);
+    const left = Math.round((due - now) / 864e5);
+    return left < 0 ? '<span class="due">Past due</span>' : left <= 10 ? `<span class="due">Due in ${left} day${left === 1 ? "" : "s"}</span>` : "";
+  }
   function renderBook() {
     const list = BOOK;
     document.getElementById("bookList").innerHTML = list.map(b => {
-      const done = !!booked[b.id];
+      const done = b.booked || !!booked[b.id];
       const links = b.links.map(([t, u]) => `<a href="${u}"${u.startsWith("#") ? "" : ' target="_blank" rel="noopener"'}>${esc(t)}</a>`).join("");
+      const box = b.booked ? `<span class="bk-ok" aria-label="Booked">✓</span>` : `<input type="checkbox" id="bk-${b.id}" data-id="${b.id}"${done ? " checked" : ""} aria-label="Booked: ${esc(b.what)}">`;
+      const badges = (b.booked ? '<span class="lvl ok">Booked</span>' : "") + (b.each ? '<span class="lvl">Each person</span>' : "")
+        + (b.routes ? `<span class="lvl${b.routes.includes(route) ? "" : " alt"}">${b.routes.map(r => PLAN_LABEL[r]).join(", ")} only</span>` : "")
+        + (done ? "" : dueTag(b));
       return `<div class="bk${done ? " done" : ""}${b.fixed ? " fixed" : ""}">
-        <input type="checkbox" id="bk-${b.id}" data-id="${b.id}"${done ? " checked" : ""} aria-label="Booked: ${esc(b.what)}">
-        <label class="when" for="bk-${b.id}">${esc(b.when)}${b.sub ? `<span>${esc(b.sub)}</span>` : ""}</label>
-        <div class="what">${b.routes ? `<span class="lvl${b.routes.includes(route) ? "" : " alt"}">${b.routes.map(r => PLAN_LABEL[r]).join(", ")} only</span>` : ""}<b>${esc(b.what)}</b><div class="links">${links}</div>${b.note ? `<p class="note">${esc(b.note)}</p>` : ""}</div>
+        ${box}
+        <label class="when"${b.booked ? "" : ` for="bk-${b.id}"`}>${esc(b.when)}${b.sub ? `<span>${esc(b.sub)}</span>` : ""}</label>
+        <div class="what">${badges ? `<div class="badges">${badges}</div>` : ""}<b>${esc(b.what)}</b><div class="links">${links}</div>${b.note ? `<p class="note">${esc(b.note)}</p>` : ""}</div>
       </div>`;
     }).join("");
-    const n = list.filter(b => booked[b.id]).length;
-    document.getElementById("bookCount").textContent = `${n} of ${list.length} booked. Ticks are saved in this browser only, so each person keeps their own list.`;
+    const n = list.filter(b => b.booked || booked[b.id]).length;
+    document.getElementById("bookCount").textContent = `${n} of ${list.length} done. Your ticks save on this device only.`;
   }
   document.getElementById("bookList").addEventListener("change", e => {
     const cb = e.target.closest("input[data-id]"); if (!cb) return;
@@ -895,6 +978,7 @@ const CREDIT2 = {"capela-almas": ["Diego Delso", "CC BY-SA 3.0", "https://creati
 
   function renderSummary() {
     const R = ROUTES[route], c = cost(route);
+    document.getElementById("sumLine").innerHTML = `${PLAN_LABEL[route]}: about <b>${usd(r10(c.total))}</b> per person. ${usd(c.paid)} is already paid (flights and Airbnbs); about ${usd(r10(c.spend))} more to spend there.`;
     const stops = R.stays.map(([city, a, b]) => `<span class="stop">${CITY[city].name} · ${nights(a, b)} nt</span>`).join("");
     document.getElementById("sumMain").innerHTML = `
       <div class="eyebrow">${PLAN_LABEL[route]}</div>
@@ -921,6 +1005,7 @@ const CREDIT2 = {"capela-almas": ["Diego Delso", "CC BY-SA 3.0", "https://creati
 
     const c1 = cost("r1"), c2 = cost("r2");
     const diff = r10(c2.total - c1.total), moveDiff = Math.round(ROUTES.r2.move - ROUTES.r1.move), seeDiff = Math.round(c2.see - c1.see);
+    document.getElementById("planDiff").textContent = usd(diff);
     const seeNote = seeDiff === 0 ? "" : seeDiff > 0 ? `, and ${usd(seeDiff)} more in tickets` : `, offset by ${usd(-seeDiff)} less in tickets`;
     document.getElementById("sumAll").innerHTML = `
       <div class="eyebrow">Compare the plans</div>
@@ -945,19 +1030,71 @@ const CREDIT2 = {"capela-almas": ["Diego Delso", "CC BY-SA 3.0", "https://creati
   }
 
   const TAG = { core: "Core", opt: "Optional", food: "Meal", rest: "Break" };
-  const li = (i, timed) => `<li>${timed ? `<span class="tm">${esc(i.tm || "")}</span>` : ""}<span class="txt">${i.k ? `<span class="tag tag-${i.k}">${TAG[i.k]}</span>` : ""}${i.u ? `<a href="${i.u}" target="_blank" rel="noopener">${esc(i.t)}</a>` : esc(i.t)}${i.g ? `<a class="more" href="#g-${i.g}">About this ↓</a>` : ""}${i.u && EN_BY_URL[i.u] && EN_BY_URL[i.u][0] !== "y" ? `<span class="en"><span class="en-${EN_BY_URL[i.u][0]}">${EN_LABEL[EN_BY_URL[i.u][0]]}</span> ${esc(EN_BY_URL[i.u][1])}</span>` : ""}</span>${i.c ? `<span class="cost">${esc(i.c)}</span>` : ""}</li>`;
+  const li = (i, timed) => `<li>${timed ? `<span class="tm">${esc(i.tm || "")}</span>` : ""}<div class="txt">${i.k ? `<span class="tag tag-${i.k}">${TAG[i.k]}</span>` : ""}${i.u ? `<a href="${i.u}" target="_blank" rel="noopener">${esc(i.t)}</a>` : esc(i.t)}${i.g && GEM[i.g] ? `<button type="button" class="more" data-gem="${i.g}" aria-expanded="false">About</button>` : ""}${i.u && EN_BY_URL[i.u] && EN_BY_URL[i.u][0] !== "y" ? `<span class="en"><span class="en-${EN_BY_URL[i.u][0]}">${EN_LABEL[EN_BY_URL[i.u][0]]}</span> ${esc(EN_BY_URL[i.u][1])}</span>` : ""}${i.g && GEM[i.g] ? `<div class="gem-pop" hidden></div>` : ""}</div>${i.c ? `<span class="cost">${esc(i.c)}</span>` : ""}</li>`;
+  const DAY0 = Date.UTC(2026, 11, 12);
+  const isoOf = i => new Date(DAY0 + i * 864e5).toISOString().slice(0, 10);
+  const TODAY = (() => { const t = new Date(); return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`; })();
+  let openDays = null;
   function renderDays() {
+    openDays = openDays === null ? new Set([TODAY]) : new Set([...document.querySelectorAll("#dayList details.day[open]")].map(d => d.dataset.iso));
     document.getElementById("daysTitle").textContent = ROUTES[route].name;
-    document.getElementById("dayList").innerHTML = DAYS[route].map(x => `
-      <div class="day${x.travel ? " travel" : ""}">
-        <div class="when"><b>${esc(x.d)}</b><span>${esc(x.p)}</span></div>
-        <div>
+    document.getElementById("dayChips").innerHTML = DAYS[route].map((x, i) => `<a href="#d-${isoOf(i)}" data-iso="${isoOf(i)}"${isoOf(i) === TODAY ? ' class="today"' : ""}>${esc(x.d.replace(" Dec ", " "))}</a>`).join("");
+    document.getElementById("dayList").innerHTML = DAYS[route].map((x, i) => {
+      const iso = isoOf(i);
+      return `
+      <details class="day${x.travel ? " travel" : ""}" id="d-${iso}" data-iso="${iso}"${openDays.has(iso) ? " open" : ""}>
+        <summary><span class="when"><b>${esc(x.d)}</b><span>${esc(x.p)}</span></span><span class="hl">${esc(x.sum || "")}</span></summary>
+        <div class="day-body">
+          ${x.start ? `<p class="start">${esc(x.start)}</p>` : ""}
           <ul>${x.items.map(i => li(i, true)).join("")}</ul>
           ${x.alts && x.alts.length ? `<div class="alts"><span class="alts-h">Alternatives and rainy-day swaps</span><ul>${x.alts.map(i => li(i, false)).join("")}</ul></div>` : ""}
           ${x.warn ? `<p class="warn">${esc(x.warn)}</p>` : ""}
-          ${x.gems ? `<p class="gem">${x.gems.map(id => `<a href="#g-${id}">${esc(GEM[id].name)}</a>`).join(" · ")}</p>` : ""}
+          ${x.gems ? `<div class="gemline"><p class="gem">${x.gems.filter(id => GEM[id]).map(id => `<button type="button" class="gem-btn" data-gem="${id}" aria-expanded="false">${esc(GEM[id].name)}</button>`).join(" · ")}</p><div class="gem-pop" hidden></div></div>` : ""}
         </div>
-      </div>`).join("");
+      </details>`;
+    }).join("");
+    syncToggle();
+  }
+  function gemCard(g) {
+    const th = g.img && typeof IMG !== "undefined" && IMG["t-" + g.img] ? `<img src="${IMG["t-" + g.img]}" alt="" width="240" height="180">` : "";
+    const en = g.en && !/^English/i.test(g.en) ? ` · ${esc(g.en)}` : "";
+    return `<div class="gem-card${th ? " has-img" : ""}">${th}<div><b>${esc(g.name)}</b><p>${esc(g.text)}</p><p class="meta">${esc(g.cost)}${en}</p></div></div>`;
+  }
+  function syncToggle() {
+    const all = [...document.querySelectorAll("#dayList details.day")];
+    document.getElementById("dayToggle").textContent = all.length && all.every(d => d.open) ? "Close all" : "Open all";
+  }
+  function openDay(iso, scroll) {
+    const d = document.getElementById("d-" + iso); if (!d || !d.tagName) return;
+    d.open = true;
+    if (scroll) { d.scrollIntoView({ behavior: "smooth", block: "start" }); try { history.replaceState(null, "", "#d-" + iso); } catch (e) { /* ignore */ } }
+  }
+  document.getElementById("dayChips").addEventListener("click", e => {
+    const a = e.target.closest("a[data-iso]"); if (!a) return;
+    e.preventDefault(); openDay(a.dataset.iso, true);
+  });
+  document.getElementById("dayToggle").addEventListener("click", () => {
+    const all = [...document.querySelectorAll("#dayList details.day")], open = !all.every(d => d.open);
+    all.forEach(d => { d.open = open; }); syncToggle();
+  });
+  document.getElementById("dayList").addEventListener("toggle", syncToggle, true);
+  document.getElementById("dayList").addEventListener("click", e => {
+    const b = e.target.closest("button[data-gem]"); if (!b) return;
+    const host = b.closest("li") || b.closest(".gemline"), pop = host && host.querySelector(".gem-pop");
+    if (!pop || !GEM[b.dataset.gem]) return;
+    const same = !pop.hidden && pop.dataset.gem === b.dataset.gem;
+    host.querySelectorAll("button[data-gem]").forEach(x => x.setAttribute("aria-expanded", "false"));
+    if (same) { pop.hidden = true; return; }
+    pop.innerHTML = gemCard(GEM[b.dataset.gem]); pop.dataset.gem = b.dataset.gem; pop.hidden = false;
+    b.setAttribute("aria-expanded", "true");
+  });
+
+  function renderGlance() {
+    document.getElementById("glance").innerHTML = `
+      <div class="g"><span>Arrive</span><b>Sun Dec 13, 9:30</b><small>Porto airport · leave Atlanta Sat Dec 12</small></div>
+      ${STAYS.map(x => `<div class="g"><span>${esc(x.city)} flat · ${esc(x.short)}</span><b>${esc(x.addr)}</b><small>In ${x.tin} · out ${x.tout} · ${esc(x.metro)} · <a href="${x.map}" target="_blank" rel="noopener">Map</a></small></div>`).join("")}
+      <div class="g"><span>Fly home</span><b>Sun Dec 20, 12:20</b><small>Lisbon airport · leave the flat 8:45</small></div>
+      <div class="g"><span>Dec 16, Porto → Lisbon</span><b>Train or driver</b><small>Not decided. Page shows the ${PLAN_LABEL[route].toLowerCase()}.</small></div>`;
   }
 
   function renderCredits() {
@@ -968,7 +1105,7 @@ const CREDIT2 = {"capela-almas": ["Diego Delso", "CC BY-SA 3.0", "https://creati
     }).join("");
   }
 
-  function renderPlan() { renderSummary(); renderBook(); renderStays(); renderDays(); }
+  function renderPlan() { renderGlance(); renderSummary(); renderBook(); renderStays(); renderDays(); }
 
   function wire(id, set) {
     document.getElementById(id).addEventListener("click", e => {
@@ -981,6 +1118,7 @@ const CREDIT2 = {"capela-almas": ["Diego Delso", "CC BY-SA 3.0", "https://creati
   wire("routeSeg", v => { route = v; });
 
   renderDests(); renderGems(); renderPlan(); renderCredits();
+  if (typeof location !== "undefined" && /^#d-/.test(location.hash)) openDay(location.hash.slice(3), true);
 })();
 </script>
 
