@@ -274,16 +274,6 @@ details ul { margin: 12px 0 0; padding-left: 1.1em; display: grid; gap: 4px; fon
     <h1>Portugal, Dec 12–20</h1>
     <p class="updated">Updated Nov 13, 2026</p>
     <div class="glance" id="glance"></div>
-    <div class="prep">
-      <h3>Before you leave</h3>
-      <ul>
-        <li>Passport valid until at least Mar 20, 2027.</li>
-        <li>Not a US passport? Check if you need a Schengen visa. Appointments can take weeks.</li>
-        <li>Rain jacket and shoes with grip.</li>
-        <li>Apps: Uber or Bolt, and Google Translate with Portuguese downloaded.</li>
-        <li>The week before: check the forecast and cp.pt for rail strikes. <a href="#know">More below</a></li>
-      </ul>
-    </div>
   </header>
 </div>
 <div class="tiles" aria-hidden="true"></div>
@@ -336,7 +326,7 @@ details ul { margin: 12px 0 0; padding-left: 1.1em; display: grid; gap: 4px; fon
   <section id="know">
     <div class="section-head">
       <div class="eyebrow">Know before you go</div>
-      <h2>Weather, entry and getting around</h2>
+      <h2>Weather and getting around</h2>
     </div>
     <div class="weather">
       <div class="wx"><span>Porto</span><b class="num">57°F</b><span>Mild, often rainy</span></div>
@@ -353,32 +343,6 @@ details ul { margin: 12px 0 0; padding-left: 1.1em; display: grid; gap: 4px; fon
           <li><b>Transit cards</b>: everyone needs their own; one card can't pay for the group. <b>Porto</b>: a blue Andante card (€0.60) from the ticket machines at the airport metro station, loaded with a Z4 ride for the airport and Z2 rides in town, or a 24-hour Andante Tour pass. <b>Lisbon</b>: a navegante occasional card (€0.50) from the machines at any metro station, such as Oriente or the airport, loaded with Zapping credit or the 24-hour ticket. A Lisbon card holds one kind of ticket at a time, so use up the Zapping credit before loading a 24-hour ticket.</li>
           <li><b>Rides</b>: for 10 people, plan on three Ubers, Bolts or taxis. In Lisbon a ride home from Alfama or Chiado is about 10 minutes and under €10 a car.</li>
         </ul>
-      </div>
-    </div>
-    <div class="grid2">
-      <div class="panel">
-        <h3>Entry to Europe</h3>
-        <ul class="plain">
-          <li><b>New border check (EES)</b>: the EU now takes fingerprints and a photo the first time you enter, so expect slower passport queues landing in Porto and leaving Lisbon. The plan allows for both.</li>
-          <li><b>ETIAS isn't needed yet</b>: as of early November 2026 the EU hadn't announced a start date for the online travel authorization. Check the <a href="https://travel-europe.europa.eu/etias_en" target="_blank" rel="noopener">official ETIAS site</a> the week before you fly.</li>
-          <li><b>Passports</b> must be valid for at least 3 months after Dec 20.</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h3>December weather and safety</h3>
-        <ul class="plain">
-          <li><b>Rain</b>: December is one of Porto's wettest months. Bring rain jackets; each outdoor day has a rainy-day swap.</li>
-          <li><b>Shoes with grip</b>: Lisbon's polished stone pavements and Porto's granite hills are very slippery when wet.</li>
-          <li><b>Cold nights</b>: colder still at Jardim do Morro and on the ferry. Portuguese flats often have weak heating, so ask both hosts about heaters.</li>
-          <li><b>Pickpockets</b>: watch bags on Tram 28, the Lisbon metro, Rossio and Ribeira.</li>
-          <li><b>Recheck in late November</b>: Wonderland Lisboa's opening, the Rossio Christmas market dates, Clérigos night tickets, the Gulbenkian's Saturday hours and price, Ponto Final's winter closing, and any rail or metro strikes.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="grid2">
-      <div class="panel">
-        <h3>Language</h3>
-        <p>Nearly everything on this plan works in English; anything that doesn't is tagged in the day plan. The Google Translate camera handles menus and signs, Chrome translates Portuguese websites, and your Airbnb hosts can call restaurants for you. "Obrigado" (men) or "obrigada" (women) means thank you.</p>
       </div>
       <div class="panel">
         <h3>Also worth trying</h3>
@@ -848,6 +812,7 @@ const CREDIT2 = {"capela-almas": ["Diego Delso", "CC BY-SA 3.0", "https://creati
     { id: "regaleira", when: "By Nov 30", sub: "30-minute slots", what: "Quinta da Regaleira, Sat Dec 19 (about 14:30)", links: [["regaleira.pt", L.regaleira]], note: "Buying gives you a voucher. Then use '(Re)agendamento' on the same site to choose your time slot. English audio guide (€5) at the ticket office." },
     { id: "jeronimos", when: "By Nov 30", sub: "often sells out", what: "Jerónimos Monastery, Fri Dec 18 (9:30 opening)", links: [["Tickets", L.jeronimos]], note: "Buying gives you a voucher; then schedule your visit time on the same site. Closed Mondays." },
     { id: "tower", when: "By Nov 30", sub: "timed 30-minute slots", what: "Belém Tower, Fri Dec 18 (about 11:15)", links: [["Tickets", L.tower]], note: "Reopened in 2026; each slot takes about 60 people. Book one after Jerónimos; they're a 10-minute walk apart." },
+    { id: "recheck", when: "By Nov 30", sub: "recheck", what: "Recheck dates and hours", links: [["cp.pt (strikes)", L.cp]], note: "Wonderland Lisboa's opening, the Rossio Christmas market dates, Clérigos night tickets, the Gulbenkian's Saturday hours and price, Ponto Final's winter closing, and any rail or metro strikes." },
     { id: "joanina", when: "By Dec 1", sub: "fixed entry time", what: "Joanina Library, Coimbra, Wed Dec 16 (about 9:30 on the driver plan; optional on the train plan)", links: [["University of Coimbra", L.uc]], note: "€16.50 with the University and Science Museum. Tickets can't be exchanged." },
     { id: "lello", when: "By Dec 1", sub: "first slot of the day", what: "Livraria Lello, Mon Dec 14", links: [["Lello tickets", L.lello]], note: "€15.95, credited toward a book. Entry is valid for 60 minutes from your slot." },
     { id: "bolsa", when: "By Dec 1", sub: "no same-day online sales", what: "Palácio da Bolsa English tour, Mon Dec 14", links: [["Book a tour", L.bolsa]], note: "Tours run in English, Portuguese, Spanish or French; booking online secures an English slot. Non-refundable." },
